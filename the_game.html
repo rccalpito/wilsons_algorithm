@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Game</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111;
+        }
+
+        canvas {
+            /* border: 1px solid #fff; */
+            background-color: #000;
+        }
+    </style>
+    <script src="maze.js" defer></script>
+    <script src="playerStuff.js" defer></script>
+    <script src="gameVars.js" defer></script>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <script>
+    window.onload = function() {
+      const maze = new Maze(canvas, ctx, mazeCellSize);
+      const player = new Player(canvas, ctx, maze, 0, 0, mazeCellSize, '#ff0000');
+
+      function gameLoop() {
+        requestAnimationFrame(gameLoop);
+      }
+      gameLoop();
+    }
+  </script>
+</body>
+</html>
